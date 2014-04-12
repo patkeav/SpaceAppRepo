@@ -16,17 +16,10 @@
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
-		var dummy_obj = {
-						"employees": [
-							{ "firstName":"John" , "lastName":"Doe" }, 
-							{ "firstName":"Anna" , "lastName":"Smith" }, 
-							{ "firstName":"Peter" , "lastName":"Jones" }
-						]
-					}
 	});
 	
+	/** Passes each element in the JSON to a template file, which creates the asteroid details **/ 
 	var elements = [];
-	console.log(app.data.asteroids);
 	$.each(app.data.asteroids, function(i, asteroid) {
 		$.ajax({
 			url: "resources/templates/asteroid-template.inc.php",
@@ -44,8 +37,10 @@
 	});
 	
 	
-	
-	function createPreviewTooltip(element) {
+	/** Function for creating the preview popover
+		@param element: the element to create the popover for
+	**/
+	function createPreviewPopover(element) {
 		$(element).popover({trigger: 'manual'});
 		var dollar = $(element).attr('data-price');
 		var danger = $(element).attr('data-closeness');
@@ -65,7 +60,11 @@
 			$(this).popover('hide');
 		});
 	}
-	function createDetailTooltip(element) {
+	
+	/** Function for creating the detail popover
+		@param element: the element to create the popover for
+	**/
+	function createDetailPopover(element) {
 		$(element).popover({trigger: 'manual'});
 		var dollar = $(element).attr('data-price');
 		var danger = $(element).attr('data-closeness');
@@ -87,14 +86,6 @@
 			$(element).attr('data-content',content).popover('show'); 
 		});
 		
-	}
-	
-	function loadAsteroids(elements_array) {
-		var container = "";
-		$.each(elements_array, function(i) {
-			container = container + elements_array[i];
-		});
-		$("#map-content").html(container);
 	}
 	</script>
 </html>

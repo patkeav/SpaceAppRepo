@@ -14,8 +14,8 @@ $element = $_POST['object'];
 	data-price="<?php echo round($element["price"]); ?>"
 	data-profit="<?php echo $element["profit"]; ?>"
 	data-closeness="<?php echo $element["full_name"]; ?>"
-	onMouseOver="createPreviewTooltip(this);"
-	onClick="createDetailTooltip(this);" 
+	onMouseOver="createPreviewPopover(this);"
+	onClick="createDetailPopover(this);" 
 	style="bottom: <?php echo round($element["yPos"]); ?>px; right:<?php echo round($element["xPos"]); ?>px">
 	<a class="asteroid-click-button"></a>
 </asteroid>
