@@ -21,13 +21,13 @@
 			</div>
 			<div id="map-content">
 				<button class="asteroid-click" id="test-button" key="asteroid1" data-html="true"
-					onClick="createDetails(this);" >Asteroid #1</button>
+					onMouseOver="createDetails(this);" >Asteroid #1</button>
 					<br />
 				<button class="asteroid-click" id="test-button" key="asteroid2" data-html="true"
-					onClick="createDetails(this);" >Asteroid #2</button>
+					onMouseOver="createDetails(this);" >Asteroid #2</button>
 					<br />
 				<button class="asteroid-click" id="test-button" key="asteroid3" data-html="true"
-					onClick="createDetails(this);" >Asteroid #3</button>
+					onMouseOver="createDetails(this);" >Asteroid #3</button>
 			</div>
 			</div><!--/col-lg-12-->
 		</div><!--/row-->
@@ -40,8 +40,8 @@
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
-		$('.asteroid-click').click(function(){
-			$('.asteroid-click').not(this).popover('hide'); //all but this
+		$('.asteroid-click').mouseover(function(){
+			$('.asteroid-click').not(this).popover('hide'); 
 		});
 	});
 	
