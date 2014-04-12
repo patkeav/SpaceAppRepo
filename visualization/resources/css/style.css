@@ -1,24 +1,20 @@
 @charset "UTF-8";
 /* CSS Document */
 
-#main-map {
-	width:100%;
-	height: 100%;
-	outline: black solid thin;
-	position: relative;
-}
 body.container {
 	height: 100%;
 	width: 100%;
+	position: relative;
 }
 #change-state li { list-style-type: none }
-
+#map-content { background: blue; }
 asteroid {
-	padding: 20px;
-	background: url('../images/button-sprite.png') no-repeat 0px -2px;
+	position: absolute;
+	padding: 10px;
+	background: url('../images/button-sprite.png') no-repeat -10px -2px;
 }
 .asteroid-click:hover {
-	background-position: 0px -22px;
+	background-position: -10px -22px;
 }
 
 

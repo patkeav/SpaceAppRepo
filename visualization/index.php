@@ -8,19 +8,10 @@
 	<head>
 	</head>
 	<body class="container">
-		<div class="row">
-			<div id="main-map" class="col-lg-12 ">
-				<h2> Asteroid Map </h2>	
-				<div id="map-content">
-					
-				</div>
-			</div><!--/col-lg-12-->
-		</div><!--/row-->
-		
-		<script type="text/javascript" src="resources/js/asterank.js"></script>
-		<script type="text/javascript" src="resources/js/data-loader.js"></script>
-	
+		<h2> Asteroid Map </h2>	
 	</body>
+	<script type="text/javascript" src="resources/js/asterank.js"></script>
+		<script type="text/javascript" src="resources/js/data-loader.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -46,7 +37,7 @@
 			error:function(response){alert("Error creating Tumblr Button" + response);}
 		}).done(function() {
 			$.each(elements, function(i) {	
-				$(elements[i]).appendTo("#map-content");
+				$(elements[i]).appendTo(".container");
 			});
 		});
 	});

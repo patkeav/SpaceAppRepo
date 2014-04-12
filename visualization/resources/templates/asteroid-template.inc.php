@@ -11,11 +11,11 @@ $element = $_POST['object'];
 	data-html="true" 
 	data-full-name="<?php echo $element["full_name"]; ?>"
 	data-material="diamonds"
-	data-price="<?php echo $element["price"]; ?>"
+	data-price="<?php echo round($element["price"]); ?>"
 	data-profit="<?php echo $element["profit"]; ?>"
 	data-closeness="<?php echo $element["full_name"]; ?>"
 	onMouseOver="createPreviewTooltip(this);"
 	onClick="createDetailTooltip(this);" 
-	>
+	style="bottom: <?php echo round($element["yPos"]); ?>px; right:<?php echo round($element["xPos"]); ?>px">
 	<a class="asteroid-click-button"></a>
 </asteroid>
