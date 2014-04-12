@@ -33,20 +33,13 @@
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
-		//$('.asteroid-click').mouseover(function(){
-		//	$('.asteroid-click').not(this).popover('hide'); 
-		//});
-		$('.asteroid-click').click(function(){
-			$('.asteroid-click').not(this).popover('hide'); 
-		});
-		
-			var dummy_obj = {
-							"employees": [
-								{ "firstName":"John" , "lastName":"Doe" }, 
-								{ "firstName":"Anna" , "lastName":"Smith" }, 
-								{ "firstName":"Peter" , "lastName":"Jones" }
-							]
-						}
+		var dummy_obj = {
+						"employees": [
+							{ "firstName":"John" , "lastName":"Doe" }, 
+							{ "firstName":"Anna" , "lastName":"Smith" }, 
+							{ "firstName":"Peter" , "lastName":"Jones" }
+						]
+					}
 	});
 	
 	function createPreviewTooltip(element) {
@@ -65,7 +58,9 @@
 			
 			$(element).attr('data-content',content).popover('show'); 
 		});
-		
+		$(element).mouseout(function() {
+			$(this).popover('hide');
+		});
 	}
 	function createDetailTooltip(element) {
 		$(element).popover({trigger: 'manual'});
