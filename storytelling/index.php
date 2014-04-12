@@ -11,9 +11,17 @@
 			<h2>in the sky with diamonds</h2>
 		</header>
 		
+		<!-- Solar system -->
 		<section class="solar-system">
 			<div class="sun centered animated rubberBand"></div>
 			<div class="earth centered"></div>
+			<div class="asteroid centered"></div>
+			<div class="asteroid centered"></div>
+		</section>
+		
+		<!-- Asteroid description -->
+		<section>
+			
 		</section>
 		
 		<!-- Scripts -->

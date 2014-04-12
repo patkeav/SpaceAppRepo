@@ -41,9 +41,15 @@ header h2 {
    clear: both;
 }
 
+/** General **/
+section {
+	width: 100%;
+	padding: 1em 0;
+}
+
 /** Astra **/
 .solar-system {
-	margin-top: 4em;
+	margin-top: 6em;
 }
 
 .sun {
@@ -63,5 +69,11 @@ header h2 {
 	width: 54px;
 	height: 54px;
 	transform-style: preserve-3d;
+}
+
+.asteroid {
+	background-image: url('../images/asteroid.png');
+	width: 37px;
+	height: 36px;
 }
 
