@@ -13,9 +13,12 @@ body.container {
 }
 #change-state li { list-style-type: none }
 
-.asteroid-click {
-	position: absolute; 
-	margin: 10px;
+asteroid {
+	padding: 20px;
+	background: url('../images/button-sprite.png') no-repeat 0px -2px;
+}
+.asteroid-click:hover {
+	background-position: 0px -22px;
 }
 
 

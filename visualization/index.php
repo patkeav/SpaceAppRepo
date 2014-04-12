@@ -12,23 +12,14 @@
 			<div id="main-map" class="col-lg-12 ">
 				<h2> Asteroid Map </h2>	
 				<div id="map-content">
-					<button class="asteroid-click" key="asteroid1" data-html="true"
-						onMouseOver="createPreviewTooltip(this);"
-						onClick="createDetailTooltip(this);" >Asteroid #1</button>
-						<br />
-					<button class="asteroid-click" key="asteroid2" data-html="true"
-						onMouseOver="createPreviewTooltip(this);"
-						onClick="createDetailTooltip(this);" >Asteroid #2</button>
-						<br />
-					<button class="asteroid-click" key="asteroid3" data-html="true"
-						onMouseOver="createPreviewTooltip(this);"
-						onClick="createDetailTooltip(this);" >Asteroid #3</button>
+					
 				</div>
 			</div><!--/col-lg-12-->
 		</div><!--/row-->
 		
 		<script type="text/javascript" src="resources/js/asterank.js"></script>
 		<script type="text/javascript" src="resources/js/data-loader.js"></script>
+	
 	</body>
 	<script type="text/javascript">
 	
@@ -42,20 +33,40 @@
 					}
 	});
 	
+	var elements = [];
+	console.log(app.data.asteroids);
+	$.each(app.data.asteroids, function(i, asteroid) {
+		$.ajax({
+			url: "resources/templates/asteroid-template.inc.php",
+			type: "POST",
+			data: {object: this},
+			success:function(result){
+				elements.push(result);
+				},
+			error:function(response){alert("Error creating Tumblr Button" + response);}
+		}).done(function() {
+			$.each(elements, function(i) {	
+				$(elements[i]).appendTo("#map-content");
+			});
+		});
+	});
+	
+	
+	
 	function createPreviewTooltip(element) {
 		$(element).popover({trigger: 'manual'});
-		var key = $(element).attr('key');
+		var dollar = $(element).attr('data-price');
+		var danger = $(element).attr('data-closeness');
 		var content;
 		$.ajax({
 				url: "resources/templates/preview-template.inc.php",
 				type: "POST",
-				data: {key: key},
+				data: {dollar: dollar, danger:danger},
 				success:function(result){
 					content = result;
 					},
 				error:function(response){alert("Error creating Tumblr Button" + response);}
-			}).done(function() {
-			
+			}).done(function() {	
 			$(element).attr('data-content',content).popover('show'); 
 		});
 		$(element).mouseout(function() {
@@ -64,12 +75,17 @@
 	}
 	function createDetailTooltip(element) {
 		$(element).popover({trigger: 'manual'});
-		var key = $(element).attr('key');
+		var dollar = $(element).attr('data-price');
+		var danger = $(element).attr('data-closeness');
+		var material = $(element).attr('data-material');
+		var price = $(element).attr('data-price');
+		var profit = $(element).attr('data-profit');
+		var traj = $(element).attr('data-closeness');
 		var content;
 		$.ajax({
 				url: "resources/templates/detail-template.inc.php",
 				type: "POST",
-				data: {key: key},
+				data: {dollar:dollar, danger:danger, material:material, price:price, profit:profit, traj:traj},
 				success:function(result){
 					content = result;
 					},
@@ -79,6 +95,14 @@
 			$(element).attr('data-content',content).popover('show'); 
 		});
 		
+	}
+	
+	function loadAsteroids(elements_array) {
+		var container = "";
+		$.each(elements_array, function(i) {
+			container = container + elements_array[i];
+		});
+		$("#map-content").html(container);
 	}
 	</script>
 </html>
