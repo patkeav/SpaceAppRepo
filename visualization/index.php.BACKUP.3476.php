@@ -31,14 +31,17 @@
 			</div>
 			</div><!--/col-lg-12-->
 		</div><!--/row-->
+<<<<<<< HEAD
+		
+		<script type="text/javascript" src="resources/js/asterank.js"></script>
+		<script type="text/javascript" src="resources/js/data-loader.js"></script>
+=======
 		<div class="modal fade" id="modal-asteroid-detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<?php include('includes/detail-template.inc.php'); ?>
 			</div><!--/modal-dialog--> 
 		</div><!--/#modal-media--> 
-		
-		<script type="text/javascript" src="resources/js/asterank.js"></script>
-		<script type="text/javascript" src="resources/js/data-loader.js"></script>
+>>>>>>> master
 	</body>
 	<script type="text/javascript">
 	
