@@ -8,7 +8,8 @@
 	<head>
 	</head>
 	<body class="container">
-		<h2> Asteroid Map </h2>	
+		<h2> Asteroid Map </h2>
+		<div id="sun-div"></div>
 	</body>
 	<script type="text/javascript" src="resources/js/asterank.js"></script>
 		<script type="text/javascript" src="resources/js/data-loader.js"></script>
@@ -37,7 +38,7 @@
 			error:function(response){alert("Error creating Tumblr Button" + response);}
 		}).done(function() {
 			$.each(elements, function(i) {	
-				$(elements[i]).appendTo(".container");
+				$(elements[i]).appendTo("body.container");
 			});
 		});
 	});
@@ -97,5 +98,3 @@
 	}
 	</script>
 </html>
-<?php //include('includes/state-nav.inc.php'); 
-?>

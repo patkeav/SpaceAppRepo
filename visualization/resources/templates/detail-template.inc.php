@@ -1,4 +1,5 @@
 <?php
+/** Template file for creating detail popovers for individual asteroids **/
 
 $dollar_value = $_POST['dollar'];
 $danger_value = $_POST['danger'];
