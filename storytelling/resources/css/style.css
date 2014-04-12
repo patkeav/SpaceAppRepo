@@ -1,6 +1,33 @@
 @charset "UTF-8";
 /* CSS Document */
 
+body {
+	background-color: #253251;
+}
+
+header {
+	text-align: center;
+	width: 100%;
+}
+
+header h1 {
+	font-family: 'bebas_neuethin';
+	color: #bdbdbd;
+	text-shadow: 4px 4px 0 #16213a;
+	font-size: 9.375em;
+	line-height: 0.9em;
+	margin: 0.1em 0;
+	margin-top: 0.3em;
+}
+
+header h2 {
+	font-family: 'bebas_neuebold';
+	color: #bdbdbd;
+	text-shadow: 4px 4px 0 #16213a;
+	font-size: 4.5em;
+	margin: 0.1em 0;
+}
+
 .container  {
 	
 }
