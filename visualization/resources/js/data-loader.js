@@ -1,5 +1,9 @@
-app			= {};
+var app		= {};
 app.data	= {};
+
+// Just 4 testing
+app.data.planets		= {};
+app.data.planets.earth	= { averageRadius: 400.0 };
 
 /**
  * @requires jQuery
@@ -16,8 +20,8 @@ app.data	= {};
 		// Create random positions
 		this.averageRadius	=	((Math.random() * (app.data.planets.earth.averageRadius/2.0)) - (app.data.planets.earth.averageRadius/4.0)) + app.data.planets.earth.averageRadius;
 		this.anglePos		= 	(Math.random() * Math.PI * 2.0);
+		
+		// 
 	});
-	
-	console.log(app.data.asteroids[0]);
 	
 })(APIAsteroids, $);

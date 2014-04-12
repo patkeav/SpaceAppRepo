@@ -18,6 +18,9 @@
 			<h2> Map stuff goes here... </h2>
 			</div><!--/col-lg-12-->
 		</div><!--/row-->
+		
+		<script type="text/javascript" src="resources/js/asterank.js"></script>
+		<script type="text/javascript" src="resources/js/data-loader.js"></script>
 	</body>
 	<script type="text/javascript">
 	
