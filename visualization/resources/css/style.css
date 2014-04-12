@@ -2,11 +2,20 @@
 /* CSS Document */
 
 #main-map {
-	height: 500px;
+	width:100%;
+	height: 100%;
 	outline: black solid thin;
+	position: relative;
 }
-
+body.container {
+	height: 100%;
+	width: 100%;
+}
 #change-state li { list-style-type: none }
 
+.asteroid-click {
+	position: absolute; 
+	margin: 10px;
+}
 
 
