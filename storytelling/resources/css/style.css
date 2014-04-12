@@ -21,7 +21,7 @@ header h1 {
 }
 
 header h2 {
-	font-family: 'bebas_neuebold';
+	font-family: 'bebas_neue_regularregular';
 	color: #bdbdbd;
 	text-shadow: 4px 4px 0 #16213a;
 	font-size: 4.5em;
@@ -32,5 +32,36 @@ header h2 {
 	
 }
 
+/** Simple clearfix **/
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
 
+/** Astra **/
+.solar-system {
+	margin-top: 4em;
+}
+
+.sun {
+	background-image: url('../images/sun.png');
+	width: 161px;
+	height: 158px;
+	z-index: 10;
+	-webkit-transform: translate(0,0);
+}
+
+.centered {
+	margin: 0 auto;
+}
+
+.earth {
+	background-image: url('../images/earth.png');
+	width: 54px;
+	height: 54px;
+	transform-style: preserve-3d;
+}
 
