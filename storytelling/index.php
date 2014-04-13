@@ -66,11 +66,21 @@
 				But it's not all peaches and cream.
 			</p>
 			
-			<p class="wow fadeInRight" data-wow-offset="200">There are 10825 Near-Earth Orbit asteroids.</p>
-			<br />
-			<p class="wow fadeInRight" data-wow-offset="200" data-wow-delay="0.6s"><strong>1466</strong> of these are potentially hazardous.</p>
+			<p class="wow fadeInRight" data-wow-offset="40">There are 10825 Near-Earth Orbit asteroids.</p>
+			<p class="wow fadeInRight" data-wow-offset="40" data-wow-delay="0.4s"><strong>1466</strong> of these are potentially dangerous.</p>
+			
+			<br/>
+			<p class="wow fadeInRight" data-wow-delay="0.4s">Only in 2013, <strong>86</strong> potentially hazardous asteroids were discovered.</p>
+			<p id="danger-solution" class="wow fadeInUp" data-wow-delay="0.8s">
+				<strong>NASA</strong> and <strong>ESA</strong> are investing in solutions to avoid asteroids collision with Earth.
+			</p>
 		</section>
 		
+		<div id="map-thumbnail" class="wow fadeInUp">
+			<a href="../visualization/">
+				<img src="resources/images/thumbnail.png" width="764" height="600" />
+			</a>
+		</div>
 		<!-- Scripts -->
 		<!-- <script type='text/javascript' src='resources/js/google-ajax.min.js'></script> -->
 		<script type='text/javascript' src='resources/js/jquery.min.js'></script>
