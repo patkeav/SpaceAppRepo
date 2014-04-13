@@ -19,5 +19,6 @@ $trajectory_value = $_POST['traj'];
 		<li class="profit-value list-group-item list-group-item-info">profit Value: <?php echo $profit_value; ?></li>
 		<li class="tracejtory-value list-group-item list-group-item-info">trajectory Value: <?php echo $trajectory_value; ?></li>
 	</ul>
+	<button class="cancel-button">Cancel</button>
 </div><!--/.popover-wrapper-->
 				 

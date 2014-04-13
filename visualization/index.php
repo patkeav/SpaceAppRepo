@@ -8,8 +8,9 @@
 	<head>
 	</head>
 	<body class="container">
-		<h2> Asteroid Map </h2>
+		<h1> Asteroid Map </h1>
 		<div id="sun-div"></div>
+		<div id="earth-div"></div>
 	</body>
 	<script type="text/javascript" src="resources/js/asterank.js"></script>
 		<script type="text/javascript" src="resources/js/data-loader.js"></script>
@@ -28,7 +29,7 @@
 			success:function(result){
 				elements.push(result);
 				},
-			error:function(response){alert("Error creating Tumblr Button" + response);}
+			error:function(response){console.log("Error creating Asteroid" + response);}
 		}).done(function() {
 			$.each(elements, function(i) {	
 				$(elements[i]).appendTo("body.container");
@@ -41,6 +42,7 @@
 		@param element: the element to create the popover for
 	**/
 	function createPreviewPopover(element) {
+		//$(element).css("-webkit-transform","scale(1.5) translate(" + $(element).attr('data-xpos') + "px, " + $(element).attr('data-ypos') + "px)");
 		$(element).popover({trigger: 'manual'});
 		var dollar = $(element).attr('data-price');
 		var danger = $(element).attr('data-closeness');
@@ -52,13 +54,15 @@
 				success:function(result){
 					content = result;
 					},
-				error:function(response){alert("Error creating Tumblr Button" + response);}
+				error:function(response){console.log("Error creating Popover Button" + response);}
 			}).done(function() {	
-			$(element).attr('data-content',content).popover('show'); 
+			$(element).attr('data-content',content).popover('show');
 		});
 		$(element).mouseout(function() {
-			$(this).popover('hide');
+			$(this).not('.detail').popover('hide');
+		//	$(this).css("-webkit-transform","scale(1) translate(" + $(this).attr('data-xpos') + "px, " + $(this).attr('data-ypos') + "px)");
 		});
+		
 	}
 	
 	/** Function for creating the detail popover
@@ -66,6 +70,7 @@
 	**/
 	function createDetailPopover(element) {
 		$(element).popover({trigger: 'manual'});
+		$(element).addClass('detail');
 		var dollar = $(element).attr('data-price');
 		var danger = $(element).attr('data-closeness');
 		var material = $(element).attr('data-material');
@@ -82,9 +87,15 @@
 					},
 				error:function(response){alert("Error creating Tumblr Button" + response);}
 			}).done(function() {
-			
-			$(element).attr('data-content',content).popover('show'); 
-		});
+				$(element).attr('data-content',content).popover('show'); 
+//				$('asteroid').not('.detail').popover('hide');
+				$('.cancel-button').on('click', function() {
+					console.log('yep');
+					$('.asteroid-click.detail').popover('hide');
+					$(this).parent().removeClass('detail');
+				});
+			});
+				//$(this).parent().parent().parent().closest('asteroid').find('.asteroid-click').popover('hide');
 		
 	}
 	</script>
