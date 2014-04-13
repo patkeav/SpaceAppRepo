@@ -26,4 +26,7 @@ app.data.planets.earth	= { averageRadius: 400.0 };
 		this.yPos			= Math.sin(this.anglePos) * this.averageRadius;
 	});
 	
+	// Testing.
+	//app.data.asteroids = [app.data.asteroids[0], app.data.asteroids[1]];
+	
 })(APIAsteroids, $);

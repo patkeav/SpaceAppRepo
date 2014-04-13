@@ -18,9 +18,12 @@
   			<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
   		</div>
 	</body>
-	<script type="text/javascript" src="resources/js/asterank.js"></script>
+		<script type="text/javascript" src="resources/js/asterank.js"></script>
 		<script type="text/javascript" src="resources/js/data-loader.js"></script>
-	<script type="text/javascript">
+		<script type="text/javascript" src="resources/js/sylvester.js"></script>
+		<!--<script type="text/javascript" src="resources/js/orbit-generator.js"></script>
+		<script type="text/javascript" src="resources/js/orbit.js"></script>-->
+		<script type="text/javascript">
 	
 	$(document).ready(function() {
 		$( "#slider" ).slider({
@@ -42,15 +45,22 @@
 		$.ajax({
 			url: "resources/templates/asteroid-template.inc.php",
 			type: "POST",
-			data: {object: this},
+			data: {asteroid_id: i, object: this},
 			success:function(result){
 				elements.push(result);
-				},
+				$(result).appendTo('body.container');
+				
+				if(i == app.data.asteroids.length - 1)
+				{
+					console.log('triggering');
+					$(window).trigger('asteroids.load');
+				}
+			},
 			error:function(response){console.log("Error creating Asteroid" + response);}
-		}).done(function() {
-			$.each(elements, function(i) {	
-				$(elements[i]).appendTo("body.container");
-			});
+		}).done(function() 
+		{
+			
+			
 		});
 	});
 	

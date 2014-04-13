@@ -1,9 +1,226 @@
 @charset "UTF-8";
 /* CSS Document */
+* { box-sizing: border-box; }
 
-#main-map {
-	height: 500px;
+body {
+	background-color: #253251;
+	font-family: 'bebas_neuebook';
+	color: white;
 }
 
+strong {
+	font-family: 'bebas_neuebold';
+}
 
+header {
+	text-align: center;
+	width: 100%;
+}
 
+header h1 {
+	font-family: 'bebas_neuethin';
+	color: #bdbdbd;
+	text-shadow: 4px 4px 0 #16213a;
+	font-size: 9.375em;
+	line-height: 0.9em;
+	margin: 0.1em 0;
+	margin-top: 0.3em;
+}
+
+header h2 {
+	font-family: 'bebas_neue_regularregular';
+	color: #bdbdbd;
+	text-shadow: 4px 4px 0 #16213a;
+	font-size: 4.5em;
+	margin: 0.1em 0;
+}
+
+.container  {
+	
+}
+
+/** Simple clearfix **/
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+ 
+.clearfix:after {
+    clear:both;
+}
+/** General **/
+section {
+	width: 100%;
+	padding: 4em 0;
+}
+
+h2 {
+	font-family: 'bebas_neuebook';
+	font-size: 4.5em;
+	text-shadow: 4px 4px 0 #16213a;
+}
+
+h2 strong {
+	font-family: 'bebas_neuebold';
+}
+
+ul {
+	list-style: circle outside url('../images/blue-dot.png');
+	padding: 1em 0;
+}
+
+ul li {
+	font-size: 2em;
+	padding: 0.6em 0;
+}
+
+/** Astra **/
+.solar-system {
+	margin-top: 6em;
+}
+
+.sun {
+	background-image: url('../images/sun.png');
+	width: 161px;
+	height: 158px;
+	z-index: 10;
+	-webkit-transform: translate(0,0);
+}
+
+.centered {
+	margin: 0 auto;
+}
+
+.earth {
+	background-image: url('../images/earth.png');
+	width: 54px;
+	height: 54px;
+	transform-style: preserve-3d;
+}
+
+.asteroid {
+	background-image: url('../images/asteroid.png');
+	width: 37px;
+	height: 36px;
+}
+
+/** Asteroid **/
+section#asteroid-description {
+	background-color: #2e3b5b;
+}
+
+.asteroid-box {
+	float: left;
+	width: 24%;
+	padding-left: 100px;
+}
+
+.asteroid-big {
+	background-image: url('../images/asteroid-big.png');
+	width: 163px;
+	height: 157px;
+	/*-webkit-transform: translate(-200%,0);*/
+}
+
+.asteroid-big.animated {
+	/*-webkit-transform: translate(0,0);*/
+}
+
+.asteroid-data-box {
+	width: 76%;
+	float: left;
+	padding-left: 80px;
+	/*-webkit-transform: translate(+200%,0);*/
+	
+	font-family: 'Arial';
+}
+
+.asteroid-data-box strong {
+	font-family: 'bebas_neuebold';
+}
+
+/** Cash **/
+.cash-count {
+	font-size: 8em;
+	font-family: 'bebas_neue_regularregular';
+	width: 100%;
+	text-align: center;
+	letter-spacing: 8px;
+	text-shadow: 12px 12px 0 #16213a;
+	margin-top: 0.2em;
+}
+
+.cash-count:after {
+	content: "$";
+}
+
+.cash-description {
+	text-align: center;
+	font-size: 2em;
+	width: 60%;
+	margin: 0 auto;
+	padding: 1em 0;
+	font-family: 'Arial';
+	font-weight: small;
+}
+
+.cash-description strong {
+	font-family: 'Arial';
+	font-weight: bold;
+}
+
+section#public-debt {
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+.usa-shape {
+	background-image: url('../images/usa-shape.png');
+	width: 251px;
+	height: 128px;	
+}
+
+.usa-shape-box {
+	width: 251px;
+	margin: 0 auto;
+}
+
+.usa-shape-description {
+	font-size: 2.4em;
+	text-align: center;
+}
+
+/** Danger! **/
+section#danger {
+	text-align: center;
+}
+
+section#danger p strong {
+	font-family: 'Arial';
+	font-weight: bold;
+}
+
+section#danger p {
+	margin: 2em 0;
+	padding: 0.1em 0;
+	font-family: 'Arial';
+	font-size: 2.4em;
+}
+
+section#danger p#danger-title {
+	font-family: 'bebas_neue_regularregular';
+	font-size: 5em;
+	margin-bottom: 1em;
+	background-color: #710f15;
+	padding: 1em 0;
+	text-shadow: 4px 4px 0 #52050a;
+	
+	border-top: 6px solid white;
+	border-bottom: 6px solid white;
+}
+
+section#danger .description {
+	font-size: 0.8em;
+}

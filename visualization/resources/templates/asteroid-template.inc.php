@@ -5,11 +5,13 @@ $element = $_POST['object'];
 $random = mt_rand(-100,100);
 $scale_value = 0.5 + (($element["est_diameter"] - 0.17))/6; 
 $opacity = 0.1 + (0.9 - ((($element["moid"] - 0.00011)/0.411) * 0.9));
+$asteroid_id = $_POST['asteroid_id'];
 //$element = json_decode($element); 
 ?>
 
 
 <asteroid class="asteroid-click" 
+	id="asteroid-<?php echo $asteroid_id; ?>"
 	title="Asteroid Details"
 	data-key="<?php echo $element["id"]; ?>"
 	data-html="true" 
