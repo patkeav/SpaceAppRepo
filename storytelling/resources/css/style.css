@@ -4,12 +4,12 @@
 
 body {
 	background-color: #253251;
-	font-family: 'bebas_neuethin';
+	font-family: 'bebas_neuebook';
 	color: white;
 }
 
 strong {
-	font-family: 'bebas_neuebook';
+	font-family: 'bebas_neuebold';
 }
 
 header {
@@ -120,28 +120,24 @@ section#asteroid-description {
 	background-image: url('../images/asteroid-big.png');
 	width: 163px;
 	height: 157px;
-	-webkit-transform: translate(-200%,0);
+	/*-webkit-transform: translate(-200%,0);*/
 }
 
 .asteroid-big.animated {
-	-webkit-transform: translate(0,0);
+	/*-webkit-transform: translate(0,0);*/
 }
 
 .asteroid-data-box {
 	width: 76%;
 	float: left;
 	padding-left: 80px;
-	-webkit-transform: translate(+200%,0);
+	/*-webkit-transform: translate(+200%,0);*/
 	
 	font-family: 'Arial';
 }
 
 .asteroid-data-box strong {
 	font-family: 'bebas_neuebold';
-}
-
-.asteroid-data-box.animated {
-	-webkit-transform: translate(0,0);
 }
 
 /** Cash **/
@@ -174,8 +170,57 @@ section#asteroid-description {
 	font-weight: bold;
 }
 
+section#public-debt {
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
 .usa-shape {
 	background-image: url('../images/usa-shape.png');
 	width: 251px;
-	height: 128px;
+	height: 128px;	
+}
+
+.usa-shape-box {
+	width: 251px;
+	margin: 0 auto;
+}
+
+.usa-shape-description {
+	font-size: 2.4em;
+	text-align: center;
+}
+
+/** Danger! **/
+section#danger {
+	text-align: center;
+}
+
+section#danger p strong {
+	font-family: 'Arial';
+	font-weight: bold;
+}
+
+section#danger p {
+	margin: 2em 0;
+	padding: 0.1em 0;
+	font-family: 'Arial';
+	font-size: 2.4em;
+}
+
+section#danger p#danger-title {
+	font-family: 'bebas_neue_regularregular';
+	font-size: 5em;
+	margin-bottom: 1em;
+	background-color: #710f15;
+	padding: 1em 0;
+	text-shadow: 4px 4px 0 #52050a;
+	
+	border-top: 6px solid white;
+	border-bottom: 6px solid white;
+}
+
+section#danger .description {
+	font-size: 0.8em;
 }

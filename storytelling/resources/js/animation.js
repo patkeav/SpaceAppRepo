@@ -102,8 +102,8 @@
 		// Asteroid description
 		$('#asteroid-description').waypoint(function(d)
 		{
-			$('.asteroid-big').addClass('animated bounceInLeft');
-			$('.asteroid-data-box').addClass('animated bounceInRight');
+			//$('.asteroid-big').addClass('animated bounceInLeft');
+			//$('.asteroid-data-box').addClass('animated bounceInRight');
 			
 			setTimeout(function(){ shouldAsteroidBigRotate = true; }, 700);
 		},
@@ -129,7 +129,7 @@
 			}
 		},
 		{
-			offset: 'bottom-in-view'
+			offset: 600
 		});
 	});
 })(jQuery);
