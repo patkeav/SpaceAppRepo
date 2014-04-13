@@ -43,14 +43,15 @@
 	**/
 	function createPreviewPopover(element) {
 		//$(element).css("-webkit-transform","scale(1.5) translate(" + $(element).attr('data-xpos') + "px, " + $(element).attr('data-ypos') + "px)");
-		$(element).popover({trigger: 'manual'});
+		$(element).popover({trigger: 'manual'})
 		var dollar = $(element).attr('data-price');
 		var danger = $(element).attr('data-closeness');
+		var opacity = $(element).attr('data-danger-opacity');
 		var content;
 		$.ajax({
 				url: "resources/templates/preview-template.inc.php",
 				type: "POST",
-				data: {dollar: dollar, danger:danger},
+				data: {dollar: dollar, danger:danger, opacity:opacity},
 				success:function(result){
 					content = result;
 					},
@@ -77,11 +78,12 @@
 		var price = $(element).attr('data-price');
 		var profit = $(element).attr('data-profit');
 		var traj = $(element).attr('data-closeness');
+		var opacity = $(element).attr('data-danger-opacity');
 		var content;
 		$.ajax({
 				url: "resources/templates/detail-template.inc.php",
 				type: "POST",
-				data: {dollar:dollar, danger:danger, material:material, price:price, profit:profit, traj:traj},
+				data: {dollar:dollar, danger:danger, material:material, price:price, profit:profit, traj:traj, opacity:opacity},
 				success:function(result){
 					content = result;
 					},
