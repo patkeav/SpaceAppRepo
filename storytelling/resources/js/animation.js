@@ -16,37 +16,12 @@
 		$('header>h1').addClass('animated bounceInLeft');
 		$('header>h2').addClass('animated bounceInRight');
 		
-		// Earth animation
+		// jQuery data
 		var $earth = $('.earth');
-		var earthAnimate	= function(t)
-		{
-			t += 0.1;
-			
-			var eMaj = 240.0;
-			var eMin = 130.0;
-			
-			
-			
-			var zIndex = (yPos > -EARTH_TOP_PADDING) ? 9 : 11;
-			
-			$earth.animate({ 
-				cantTouchThis : 100
-			},
-			{
-				duration: 10,
-				step: function(now,fx) {
-					$earth.css({
-						'-webkit-transform' : 'translate(' + xPos + 'px,' + yPos + 'px)',
-						'z-index' : zIndex
-					});
-				},
-				complete: function() {
-					earthAnimate(t);
-				}
-			});
-		};
-		
-		//earthAnimate(0.0);
+		var $asteroid = $('.asteroid');
+		var $asteroidBig = $('.asteroid-big');
+		var shouldAsteroidBigRotate = false;
+		var isCashCountStarted = false;
 		
 		// Frame based animation, if you know what I mean.
 		window.requestAnimationFrame =  window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;;
@@ -61,7 +36,7 @@
 		var aMaj = 260.0;
 		var aMin = 140.0;
 		
-		var $asteroid = $('.asteroid');
+		var aBigRotStart = null;
 		
 		// Prepare asteroid deltas
 		var asteroidDelta = [];
@@ -88,6 +63,7 @@
 				'-webkit-transform' : 'translate(' + eXPos + 'px,' + eYPos + 'px)'
 			});
 			
+			// Asteroid
 			var i = 0;
 			$asteroid.each(function(asteroid)
 			{
@@ -105,40 +81,55 @@
 				i++;
 			});
 			
+			// Big asteroid
+			if(shouldAsteroidBigRotate)
+			{
+				if(aBigRotStart === null) aBigRotStart = t;
+				var aBigRot = ((t-aBigRotStart)/2.0 * (180/Math.PI)) % 360;
+				
+				$asteroidBig.css({
+					'-webkit-transform' : 'rotate(' + aBigRot + 'deg)',
+					'-webkit-animation-name' : 'none'
+				})
+			}
+			
 			requestAnimationFrame(animateFx);
 		}
 		
 		// Let's start, baby.
 		requestAnimationFrame(animateFx);
 		
-		// Asteroid animation
-		var asteroidAnimate = function(t)
+		// Asteroid description
+		$('#asteroid-description').waypoint(function(d)
 		{
-			t += 0.12;
+			$('.asteroid-big').addClass('animated bounceInLeft');
+			$('.asteroid-data-box').addClass('animated bounceInRight');
 			
-			var eMaj = 260.0;
-			var eMin = 140.0;
-			
-			var xPos = Math.floor(eMaj * Math.cos(t));
-			var yPos = Math.floor(eMin * Math.sin(t)) - ASTEROID_TOP_PADDING;
-			
-			var scaleXY = (0.1 * Math.abs(yPos))/eMin + 0.9;
-			
-			$asteroid.animate({
-				cantTouchThis : 101
-			},
+			setTimeout(function(){ shouldAsteroidBigRotate = true; }, 700);
+		},
+		{
+			offset: 'bottom-in-view'
+		});
+		
+		// Cash!
+		$('#cash').waypoint(function(d)
+		{
+			if(!isCashCountStarted)
 			{
-				duration: 10,
-				step: function(now, fx) {
-					$asteroid.css({
-						'-webkit-transform' : 'translate(' + xPos + 'px,' + yPos + 'px) scale(' + scaleXY + ')'
-					});
-				},
-				complete : function(){
-					asteroidAnimate(t);
-				}
-			});
-		}
-		//asteroidAnimate(4.0);
+				isCashCountStarted = true;
+				
+				$('.cash-count').countTo({
+					from: 0, 
+					to: 101536965731505, 
+					speed: 2000,
+					formatter: function (value, options) {
+						return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+					}
+				});
+			}
+		},
+		{
+			offset: 'bottom-in-view'
+		});
 	});
 })(jQuery);

@@ -1,8 +1,15 @@
 @charset "UTF-8";
 /* CSS Document */
+* { box-sizing: border-box; }
 
 body {
 	background-color: #253251;
+	font-family: 'bebas_neuethin';
+	color: white;
+}
+
+strong {
+	font-family: 'bebas_neuebook';
 }
 
 header {
@@ -33,18 +40,39 @@ header h2 {
 }
 
 /** Simple clearfix **/
+.clearfix:before,
 .clearfix:after {
-   content: " "; /* Older browser do not support empty content */
-   visibility: hidden;
-   display: block;
-   height: 0;
-   clear: both;
+    content:"";
+    display:table;
 }
-
+ 
+.clearfix:after {
+    clear:both;
+}
 /** General **/
 section {
 	width: 100%;
+	padding: 4em 0;
+}
+
+h2 {
+	font-family: 'bebas_neuebook';
+	font-size: 4.5em;
+	text-shadow: 4px 4px 0 #16213a;
+}
+
+h2 strong {
+	font-family: 'bebas_neuebold';
+}
+
+ul {
+	list-style: circle outside url('../images/blue-dot.png');
 	padding: 1em 0;
+}
+
+ul li {
+	font-size: 2em;
+	padding: 0.6em 0;
 }
 
 /** Astra **/
@@ -77,3 +105,77 @@ section {
 	height: 36px;
 }
 
+/** Asteroid **/
+section#asteroid-description {
+	background-color: #2e3b5b;
+}
+
+.asteroid-box {
+	float: left;
+	width: 24%;
+	padding-left: 100px;
+}
+
+.asteroid-big {
+	background-image: url('../images/asteroid-big.png');
+	width: 163px;
+	height: 157px;
+	-webkit-transform: translate(-200%,0);
+}
+
+.asteroid-big.animated {
+	-webkit-transform: translate(0,0);
+}
+
+.asteroid-data-box {
+	width: 76%;
+	float: left;
+	padding-left: 80px;
+	-webkit-transform: translate(+200%,0);
+	
+	font-family: 'Arial';
+}
+
+.asteroid-data-box strong {
+	font-family: 'bebas_neuebold';
+}
+
+.asteroid-data-box.animated {
+	-webkit-transform: translate(0,0);
+}
+
+/** Cash **/
+.cash-count {
+	font-size: 8em;
+	font-family: 'bebas_neue_regularregular';
+	width: 100%;
+	text-align: center;
+	letter-spacing: 8px;
+	text-shadow: 12px 12px 0 #16213a;
+	margin-top: 0.2em;
+}
+
+.cash-count:after {
+	content: "$";
+}
+
+.cash-description {
+	text-align: center;
+	font-size: 2em;
+	width: 60%;
+	margin: 0 auto;
+	padding: 1em 0;
+	font-family: 'Arial';
+	font-weight: small;
+}
+
+.cash-description strong {
+	font-family: 'Arial';
+	font-weight: bold;
+}
+
+.usa-shape {
+	background-image: url('../images/usa-shape.png');
+	width: 251px;
+	height: 128px;
+}
