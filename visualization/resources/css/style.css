@@ -9,13 +9,13 @@
 	/**-webkit-transform: rotateX(30deg);**/
 }
 @-webkit-keyframes axis-spin {
-	0% { -webkit-transform: scaleY(0.95) rotateZ(0deg); }
+	0% { -webkit-transform: scaleY(0.95) }
 	
-	50% { -webkit-transform: scaleY(1) rotateZ(360deg); }
+	50% { -webkit-transform: scaleY(1)  }
 	
-	100% { -webkit-transform: scaleY(0.95) rotateZ(720deg); }
+	100% { -webkit-transform: scaleY(0.95)  }
 }
-h1 { color: white; }
+h1.map-title { color: white; }
 #sun-div {
 	position: absolute;
 	top: calc(50% - 158px/2);
@@ -48,6 +48,13 @@ asteroid:hover {
 	padding: 30px;
 	top: calc(50% - 30px);
 	left: calc(50% - 30px);
+}
+#slider-wrapper { 
+	position: fixed;
+	right: 0; 
+	background:red;
+	z-index: 100;
+	display:none;
 }
 
 

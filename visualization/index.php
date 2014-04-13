@@ -1,6 +1,7 @@
 <html>
 	<script type='text/javascript' src='resources/js/google-ajax.min.js'></script>
 	<script type='text/javascript' src='resources/js/jquery.min.js'></script>
+	<script type='text/javascript' src='resources/js/jquery-ui.min.js'></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="resources/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -8,15 +9,31 @@
 	<head>
 	</head>
 	<body class="container">
-		<h1> Asteroid Map </h1>
+		<h1 class="map-title"> Asteroid Map </h1>
 		<div id="sun-div"></div>
 		<div id="earth-div"></div>
+		<div id="slider-wrapper">
+			<div id="slider"></div>
+			<label for="amount">Volume:</label>
+  			<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+  		</div>
 	</body>
 	<script type="text/javascript" src="resources/js/asterank.js"></script>
 		<script type="text/javascript" src="resources/js/data-loader.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
+		$( "#slider" ).slider({
+			  orientation: "vertical",
+			  range: "min",
+			  min: 0,
+			  max: 100,
+			  value: 60,
+			  slide: function( event, ui ) {
+				$( "#amount" ).val( ui.value );
+			  }
+		});
+		$( "#amount" ).val( $( "#slider" ).slider( "value" ) );
 	});
 	
 	/** Passes each element in the JSON to a template file, which creates the asteroid details **/ 
@@ -75,15 +92,15 @@
 		var dollar = $(element).attr('data-price');
 		var danger = $(element).attr('data-closeness');
 		var material = $(element).attr('data-material');
-		var price = $(element).attr('data-price');
 		var profit = $(element).attr('data-profit');
 		var traj = $(element).attr('data-closeness');
 		var opacity = $(element).attr('data-danger-opacity');
+		var name = $(element).attr('data-full-name');
 		var content;
 		$.ajax({
 				url: "resources/templates/detail-template.inc.php",
 				type: "POST",
-				data: {dollar:dollar, danger:danger, material:material, price:price, profit:profit, traj:traj, opacity:opacity},
+				data: {dollar:dollar, danger:danger, material:material, profit:profit, traj:traj, opacity:opacity, name:name},
 				success:function(result){
 					content = result;
 					},
