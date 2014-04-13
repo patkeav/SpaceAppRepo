@@ -1,21 +1,53 @@
 @charset "UTF-8";
 /* CSS Document */
 
-#main-map {
-	width:100%;
-	height: 100%;
-	outline: black solid thin;
-	position: relative;
-}
-body.container {
-	height: 100%;
+.container { 
 	width: 100%;
+	height: 100%;
+	position:relative;
+	background: #253251;
+	/**-webkit-transform: rotateX(30deg);**/
 }
-#change-state li { list-style-type: none }
-
-.asteroid-click {
-	position: absolute; 
-	margin: 10px;
+@-webkit-keyframes axis-spin {
+	0% { -webkit-transform: scaleY(0.95) rotateZ(0deg); }
+	
+	50% { -webkit-transform: scaleY(1) rotateZ(360deg); }
+	
+	100% { -webkit-transform: scaleY(0.95) rotateZ(720deg); }
+}
+h1 { color: white; }
+#sun-div {
+	position: absolute;
+	top: calc(50% - 158px/2);
+	left: calc(50% - 161px/2);
+	width:161px;
+	height: 158px;
+	background: url('../images/sun.png');
+	-webkit-animation: axis-spin 4s infinite normal linear;
+}
+#earth-div {
+	position: absolute;
+	top: calc(50% - 54px/2);
+	left: calc(50% - 54px/2);
+	width:54px;
+	height:54px;
+	background: url('../images/earth.png');
+	-webkit-transform: translate(300px,0);
+}
+asteroid {
+	position: absolute;
+	padding: 10px;
+	top: calc(50% - 10px);
+	left: calc(50% - 10px);
+	background: url('../images/asteroid-big.png') no-repeat ;
+	background-size: 100%;
+}
+asteroid:hover {
+	-webkit-transform: scale(1.1,1.1);
+	cursor: pointer;
+	padding: 30px;
+	top: calc(50% - 30px);
+	left: calc(50% - 30px);
 }
 
 

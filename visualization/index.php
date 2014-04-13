@@ -8,79 +8,97 @@
 	<head>
 	</head>
 	<body class="container">
-		<div class="row">
-			<div id="main-map" class="col-lg-12 ">
-				<h2> Asteroid Map </h2>	
-				<div id="map-content">
-					<button class="asteroid-click" key="asteroid1" data-html="true"
-						onMouseOver="createPreviewTooltip(this);"
-						onClick="createDetailTooltip(this);" >Asteroid #1</button>
-						<br />
-					<button class="asteroid-click" key="asteroid2" data-html="true"
-						onMouseOver="createPreviewTooltip(this);"
-						onClick="createDetailTooltip(this);" >Asteroid #2</button>
-						<br />
-					<button class="asteroid-click" key="asteroid3" data-html="true"
-						onMouseOver="createPreviewTooltip(this);"
-						onClick="createDetailTooltip(this);" >Asteroid #3</button>
-				</div>
-			</div><!--/col-lg-12-->
-		</div><!--/row-->
-		
-		<script type="text/javascript" src="resources/js/asterank.js"></script>
-		<script type="text/javascript" src="resources/js/data-loader.js"></script>
+		<h1> Asteroid Map </h1>
+		<div id="sun-div"></div>
+		<div id="earth-div"></div>
 	</body>
+	<script type="text/javascript" src="resources/js/asterank.js"></script>
+		<script type="text/javascript" src="resources/js/data-loader.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
-		var dummy_obj = {
-						"employees": [
-							{ "firstName":"John" , "lastName":"Doe" }, 
-							{ "firstName":"Anna" , "lastName":"Smith" }, 
-							{ "firstName":"Peter" , "lastName":"Jones" }
-						]
-					}
 	});
 	
-	function createPreviewTooltip(element) {
-		$(element).popover({trigger: 'manual'});
-		var key = $(element).attr('key');
+	/** Passes each element in the JSON to a template file, which creates the asteroid details **/ 
+	var elements = [];
+	$.each(app.data.asteroids, function(i, asteroid) {
+		$.ajax({
+			url: "resources/templates/asteroid-template.inc.php",
+			type: "POST",
+			data: {object: this},
+			success:function(result){
+				elements.push(result);
+				},
+			error:function(response){console.log("Error creating Asteroid" + response);}
+		}).done(function() {
+			$.each(elements, function(i) {	
+				$(elements[i]).appendTo("body.container");
+			});
+		});
+	});
+	
+	
+	/** Function for creating the preview popover
+		@param element: the element to create the popover for
+	**/
+	function createPreviewPopover(element) {
+		//$(element).css("-webkit-transform","scale(1.5) translate(" + $(element).attr('data-xpos') + "px, " + $(element).attr('data-ypos') + "px)");
+		$(element).popover({trigger: 'manual'})
+		var dollar = $(element).attr('data-price');
+		var danger = $(element).attr('data-closeness');
+		var opacity = $(element).attr('data-danger-opacity');
 		var content;
 		$.ajax({
 				url: "resources/templates/preview-template.inc.php",
 				type: "POST",
-				data: {key: key},
+				data: {dollar: dollar, danger:danger, opacity:opacity},
 				success:function(result){
 					content = result;
 					},
-				error:function(response){alert("Error creating Tumblr Button" + response);}
-			}).done(function() {
-			
-			$(element).attr('data-content',content).popover('show'); 
+				error:function(response){console.log("Error creating Popover Button" + response);}
+			}).done(function() {	
+			$(element).attr('data-content',content).popover('show');
 		});
 		$(element).mouseout(function() {
-			$(this).popover('hide');
+			$(this).not('.detail').popover('hide');
+		//	$(this).css("-webkit-transform","scale(1) translate(" + $(this).attr('data-xpos') + "px, " + $(this).attr('data-ypos') + "px)");
 		});
+		
 	}
-	function createDetailTooltip(element) {
+	
+	/** Function for creating the detail popover
+		@param element: the element to create the popover for
+	**/
+	function createDetailPopover(element) {
 		$(element).popover({trigger: 'manual'});
-		var key = $(element).attr('key');
+		$(element).addClass('detail');
+		var dollar = $(element).attr('data-price');
+		var danger = $(element).attr('data-closeness');
+		var material = $(element).attr('data-material');
+		var price = $(element).attr('data-price');
+		var profit = $(element).attr('data-profit');
+		var traj = $(element).attr('data-closeness');
+		var opacity = $(element).attr('data-danger-opacity');
 		var content;
 		$.ajax({
 				url: "resources/templates/detail-template.inc.php",
 				type: "POST",
-				data: {key: key},
+				data: {dollar:dollar, danger:danger, material:material, price:price, profit:profit, traj:traj, opacity:opacity},
 				success:function(result){
 					content = result;
 					},
 				error:function(response){alert("Error creating Tumblr Button" + response);}
 			}).done(function() {
-			
-			$(element).attr('data-content',content).popover('show'); 
-		});
+				$(element).attr('data-content',content).popover('show'); 
+//				$('asteroid').not('.detail').popover('hide');
+				$('.cancel-button').on('click', function() {
+					console.log('yep');
+					$('.asteroid-click.detail').popover('hide');
+					$(this).parent().removeClass('detail');
+				});
+			});
+				//$(this).parent().parent().parent().closest('asteroid').find('.asteroid-click').popover('hide');
 		
 	}
 	</script>
 </html>
-<?php //include('includes/state-nav.inc.php'); 
-?>
