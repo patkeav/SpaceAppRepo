@@ -6,7 +6,6 @@
 	height: 100%;
 	position:relative;
 	background: #253251;
-	/**-webkit-transform: rotateX(30deg);**/
 }
 @-webkit-keyframes axis-spin {
 	0% { -webkit-transform: scaleY(0.95) rotateZ(0deg); }
